@@ -1,14 +1,24 @@
 import * as d3 from 'd3';
 
 const w = 500;
-const h = 100;
+const h = 200;
 const pad = 20;
 
-let dataset = [
-  [5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
-  [410, 12], [475, 44], [25, 67], [85, 21], [220, 88],
-  [600, 150]
-];
+// let dataset = [
+//   [5, 20], [480, 90], [250, 50], [100, 33], [330, 95],
+//   [410, 12], [475, 44], [25, 67], [85, 21], [220, 88],
+//   [600, 150]
+// ];
+
+let dataset = [];
+let numDataPoints = 50;
+let xRange = Math.random() * 1000;
+let yRange = Math.random() * 1000;
+for (let i = 0; i < numDataPoints; i++) {
+  let newNumber1 = Math.floor(Math.random() * xRange);
+  let newNumber2 = Math.floor(Math.random() * yRange);
+  dataset.push([newNumber1, newNumber2]);
+}
 
 const xScale = d3.scaleLinear()
     .domain([0, d3.max(dataset, (d) => d[0])])
