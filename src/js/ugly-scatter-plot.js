@@ -1,3 +1,5 @@
+import * as d3 from 'd3';
+
 const w = 500;
 const h = 100;
 const pad = 1;
@@ -24,21 +26,17 @@ svg.selectAll('circle')
     .data(dataset)
     .enter()
     .append('circle')
-    .attrs({
-      cx: (d) => d[0],
-      cy: (d) => d[1],
-      r: (d) => Math.sqrt(h - d[1])
-    });
+    .attr('cx', (d) => d[0])
+    .attr('cy', (d) => d[1])
+    .attr('r', (d) => Math.sqrt(h - d[1]))
 
 svg.selectAll('text')
     .data(dataset)
     .enter()
     .append('text')
     .text((d) => `${d[0]}, ${d[1]}`)
-    .attrs({
-      x: (d) => d[0],
-      y: (d) => d[1],
-      fill: 'teal'
-    })
+    .attr('x', (d) => d[0])
+    .attr('y', (d) => d[1])
+    .attr('fill', 'teal')
     .attr('font-family', 'sans-serif')
     .attr('font-size', '11px');

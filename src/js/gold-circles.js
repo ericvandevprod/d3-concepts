@@ -1,3 +1,4 @@
+import * as d3 from 'd3';
 
 const w = 500;
 const h = 50;
