@@ -33,3 +33,29 @@ svg.selectAll('text')
     .attr('font-size', '11px')
     .attr('fill', 'white')
     .attr("text-anchor", "middle");
+
+
+let update = document.createElement('p');
+let text = document.createTextNode('Click to update');
+let body = document.getElementsByTagName('body')[0];
+update.appendChild(text);
+body.appendChild(update);
+
+d3.select("p")
+    .on("click", function() {
+      //New values for dataset
+      dataset = [ 11, 12, 15, 20, 18, 17, 16, 18, 23, 25,
+        5, 10, 13, 19, 21, 25, 22, 18, 15, 13 ];
+      //Update all rects
+      svg.selectAll("rect")
+          .data(dataset)
+          .attr("y", (d) => h - (d * 4))
+          .attr("height", (d) => d * 4);
+
+      svg.selectAll('text')
+          .data(dataset)
+          .text((d) => d)
+          .attr('x', (d, i) => i * (w / dataset.length) + (w / dataset.length - pad) / 2)
+          .attr('y', (d) => h - (d * 4) + 14)
+
+    });
